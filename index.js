@@ -1,4 +1,5 @@
-function Hex(number) {if (number < 0) {number = 0xFFFFFFFF + number + 1} return number.toString(16).toUpperCase().padEnd(2, '0')}
+function hex(number) {if (number < 0) {number = 0xFFFFFFFF + number + 1} return number.toString(16).toUpperCase().padEnd(2, '0')}
+function print(...vals){process.stdout.write(...vals)}
 const net = require("net")
 require('dotenv').config()
 var connection
@@ -14,11 +15,17 @@ const clientCom = net.createServer(socket => {
     console.log('Client connected')
     connection = socket
     socket.on("data", data => {
-        process.stdout.write('Client Sent: ')
-        for (num of data.values()) {
-            process.stdout.write(`${Hex(num)} `)
+        data.format = (str) => {
+            console.log(str)
         }
-        process.stdout.write("\n")
+        if (hex(data[2]) == "11") {
+            print("pos ")
+        }
+        var newdata = data.slice(2,data.length)
+        for (num of data) {
+            print(`${hex(num)} `)
+        }
+        print("\n")
         serverCom.write(data)
     })
     socket.on('end',() => {
