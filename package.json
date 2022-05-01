@@ -16,7 +16,7 @@
     "url": "https://github.com/cody-ferguson/Minecraft-proxy/issues"
   },
   "homepage": "https://github.com/cody-ferguson/Minecraft-proxy#readme",
-  "dependencies": {
+  "devDependencies": {
     "dotenv": "^16.0.0"
   }
 }
