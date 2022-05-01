@@ -3,7 +3,9 @@ function print(...vals){process.stdout.write(...vals)}
 const net = require("net")
 require('dotenv').config()
 var connection
-
+class Proxy{
+    constructor()
+}
 
 var serverCom = net.createConnection(process.env.ServerPort)
 serverCom.end()
@@ -21,8 +23,8 @@ const clientCom = net.createServer(socket => {
         if (hex(data[2]) == "11") {
             print("pos ")
         }
-        var newdata = data.slice(2,data.length)
-        for (num of data) {
+        var newdata = data.slice(3,data.length)
+        for (num of newdata) {
             print(`${hex(num)} `)
         }
         print("\n")
