@@ -4,7 +4,8 @@ const net = require("net")
 require('dotenv').config()
 var connection
 class Proxy{
-    constructor()
+    #serverCom
+    constructor(serverHost = "localhost")
 }
 
 var serverCom = net.createConnection(process.env.ServerPort)
