@@ -1,11 +1,15 @@
 function hex(number) {if (number < 0) {number = 0xFFFFFFFF + number + 1} return number.toString(16).toUpperCase().padEnd(2, '0')}
 function print(...vals){process.stdout.write(...vals)}
 const net = require("net")
-require('dotenv').config()
 var connection
 class Proxy{
     #serverCom
-    constructor(serverHost = "localhost")
+    #clientCom
+    constructor(serverHost = "localhost",serverPort = 25565,localport = 25566){
+        this.#serverCom = net.createConnection({host: serverHost,port:serverPort})
+        serverCom.end()
+        
+    }
 }
 
 var serverCom = net.createConnection(process.env.ServerPort)
