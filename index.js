@@ -4,11 +4,34 @@ const net = require("net")
 var connection
 class Proxy{
     #serverCom
+    #serverHost
+    #serverPort
+    #localPort
     #clientCom
-    constructor(serverHost = "localhost",serverPort = 25565,localport = 25566){
-        this.#serverCom = net.createConnection({host: serverHost,port:serverPort})
-        serverCom.end()
-        
+    
+    constructor(serverHost = "localhost",serverPort = 25565,localPort = 25566){
+        this.#serverHost = serverHost
+        this.#serverPort = serverPort
+        this.#localPort = localPort
+    }
+    start() {
+        this.#serverCom = net.createConnection(process.env.ServerPort)
+        this.#clientCom = net.createServer(socket => {
+            serverCom.connect(process.env.ServerPort)
+            connection = socket
+            socket.on("data", data => {
+                data.format = (str) => {
+                    console.log(str)
+                }
+                var newdata = data.slice(3,data.length)
+                if (hex(data[2]) == "11") {
+                    print("pos ")
+                }
+            })
+            socket.on('end',() => {
+                serverCom.end()
+            })
+        })
     }
 }
 
