@@ -3,12 +3,14 @@ function print(...vals){process.stdout.write(...vals)}
 const net = require("net")
 var connection
 class Proxy{
-    #serverCom
+    // Connection stuff
     #serverHost
     #serverPort
     #localPort
+    // Connection objects
+    #serverCom
     #clientCom
-    
+
     constructor(serverHost = "localhost",serverPort = 25565,localPort = 25566){
         this.#serverHost = serverHost
         this.#serverPort = serverPort

@@ -1,1 +1,1 @@
-# Minecraft-proxy
+# Minecraft-proxy-lib
